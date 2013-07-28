@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Owin.Testing</id>
+    <version>0.4.0.0</version>
+    <title>Owin.Testing</title>
+    <authors>Damian Hickey</authors>
+    <owners>Damian Hickey</owners>
+    <projectUrl>https://github.com/damianh/Owin.Testing</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A library that allows you to in-memory test owin applications without any environmental dependencies such as WebServer, HttpListener etc</description>
+    <tags>owin testing</tags>
+    <dependencies>
+      <dependency id="Owin" version="1.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+  </metadata>
+</package>
