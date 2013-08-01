@@ -16,7 +16,7 @@
     {
         public static IEnumerable<object[]> Repeat
         {
-            get { return Enumerable.Repeat(1, 1000).Select(i => new object[]{ i }); }
+            get { return Enumerable.Repeat(1, 10).Select(i => new object[]{ i }); }
         }
 
         [Theory]
