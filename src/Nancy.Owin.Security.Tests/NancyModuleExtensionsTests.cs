@@ -1,19 +1,27 @@
 ﻿namespace Nancy.Owin.Security.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
     using FluentAssertions;
-    using Microsoft.Owin;
-    using Microsoft.Owin.Infrastructure;
-    using Microsoft.Owin.Security.Cookies;
-    using Xunit;
     using global::Owin;
     using global::Owin.Testing;
+    using Microsoft.Owin.Infrastructure;
+    using Microsoft.Owin.Security.Cookies;
+    using Xunit.Extensions;
 
     public class NancyModuleExtensionsTests
     {
-        [Fact]
-        public async Task When_attempt_to_access_secure_area_Then_should_redirect_to_login_page()
+        public static IEnumerable<object[]> Repeat
+        {
+            get { return Enumerable.Repeat(1, 1000).Select(i => new object[]{ i }); }
+        }
+
+        [Theory]
+        [PropertyData("Repeat")]
+        public async Task When_attempt_to_access_secure_area_Then_should_redirect_to_login_page(int _)
         {
             OwinTestServer testServer = OwinTestServer.Create(builder =>
             {
@@ -27,14 +35,10 @@
                 builder.UseNancy();
             });
 
-            HttpClient httpClient = testServer.CreateHttpClient(env =>
-            {
-                var owinContext = new OwinContext(env);
-                owinContext.Response.OnSendingHeaders(o => { }, null);
-            });
+            HttpClient httpClient = testServer.CreateHttpClient();
 
             HttpResponseMessage response = await httpClient.GetAsync("http://example.com/secured");
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.Found);
+            response.StatusCode.Should().Be(HttpStatusCode.Found);
         }
     }
 }
