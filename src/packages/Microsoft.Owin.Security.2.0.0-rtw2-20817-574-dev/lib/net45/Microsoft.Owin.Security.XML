@@ -303,6 +303,32 @@
             <param name="authenticationMode">The authentication mode the middleware is running under</param>
             <returns>The information instructing the middleware how it should behave</returns>
         </member>
+        <member name="T:Microsoft.Owin.Security.Provider.BaseContext`1">
+            <summary>
+            Base class used for certain event contexts
+            </summary>
+        </member>
+        <member name="T:Microsoft.Owin.Security.Provider.EndpointContext`1">
+            <summary>
+            Base class used for certain event contexts
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Provider.EndpointContext`1.#ctor(Microsoft.Owin.IOwinContext,`0)">
+            <summary>
+            Creates an instance of this context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Provider.EndpointContext`1.RequestCompleted">
+            <summary>
+            Prevents the request from being processed further by other components. 
+            IsRequestCompleted becomes true after calling.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Provider.EndpointContext`1.IsRequestCompleted">
+            <summary>
+            True if the request should not be processed further by other components.
+            </summary>
+        </member>
         <member name="T:Microsoft.Owin.Security.Resources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -319,9 +345,9 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
-        <member name="P:Microsoft.Owin.Security.Resources.Exception_AuthenticationTicketDoesNotProvideSyncMethods">
+        <member name="P:Microsoft.Owin.Security.Resources.Exception_AuthenticationTokenDoesNotProvideSyncMethods">
             <summary>
-              Looks up a localized string similar to error.
+              Looks up a localized string similar to The AuthenticationTokenProvider&apos;s required synchronous events have not been registered..
             </summary>
         </member>
         <member name="P:Microsoft.Owin.Security.Resources.Exception_DefaultDpapiRequiresAppNameKey">
