@@ -9,9 +9,14 @@ namespace Nancy.Owin.Security
     {
         public static IAuthenticationManager GetAuthenticationManager(this NancyContext nancyContext)
         {
+            return GetOwinContext(nancyContext).Authentication;
+        }
+
+        public static IOwinContext GetOwinContext(this NancyContext nancyContext)
+        {
             var environment = (IDictionary<string, object>)nancyContext.Items[NancyOwinHost.RequestEnvironmentKey];
             var owinContext = new OwinContext(environment);
-            return owinContext.Authentication;
+            return owinContext;
         }
     }
 }
