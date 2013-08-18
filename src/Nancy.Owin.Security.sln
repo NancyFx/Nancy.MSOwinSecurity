@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Owin.Security.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\SampleApp.csproj", "{70A59B70-1C59-47AC-A028-C974ACCD56D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp.Console", "SampleApp.Console\SampleApp.Console.csproj", "{DB1B080E-45F6-49E2-8DAF-9C500FECF350}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{70A59B70-1C59-47AC-A028-C974ACCD56D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70A59B70-1C59-47AC-A028-C974ACCD56D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70A59B70-1C59-47AC-A028-C974ACCD56D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB1B080E-45F6-49E2-8DAF-9C500FECF350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1B080E-45F6-49E2-8DAF-9C500FECF350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1B080E-45F6-49E2-8DAF-9C500FECF350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1B080E-45F6-49E2-8DAF-9C500FECF350}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

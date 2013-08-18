@@ -1,15 +1,13 @@
 ﻿namespace SampleApp
 {
     using System.Security.Principal;
-    using Microsoft.Owin;
-    using Microsoft.Owin.Builder;
-    using Microsoft.Owin.Infrastructure;
     using Microsoft.Owin.Security;
     using Microsoft.Owin.Security.Cookies;
     using Nancy;
     using Nancy.ModelBinding;
     using Nancy.Owin.Security;
-    using Owin;
+    using Nancy.Responses;
+    using SampleApp.Models;
 
     public class SampleModule : NancyModule
     {
@@ -18,12 +16,29 @@
             Get["/"] = _ =>
             {
                 IOwinAuth owinAuth = Context.GetOwinAuth();
-                if (owinAuth.User == null || !owinAuth.User.Identity.IsAuthenticated)
+                var pageBase = new PageBase();
+                if (owinAuth.User != null && owinAuth.User.Identity.IsAuthenticated)
                 {
-                    return "Not authenticated";
+                    pageBase.Username =  owinAuth.User.Identity.Name;
                 }
-                return "Hello " + owinAuth.User.Identity.Name;
+                return View["Index", pageBase];
             };
+
+            Get["/cookies"] = _ => View["Cookies"];
+
+            Post["/cookies"] = _ =>
+            {
+                var login = this.Bind<Login>();
+                if (login.Username == "user" && login.Password == "pass")
+                {
+                    IOwinAuth owinAuth = Context.GetOwinAuth();
+                    owinAuth.SignIn(new AuthenticationProperties(),
+                        new GenericIdentity("User", CookieAuthenticationDefaults.AuthenticationType));
+                    return new RedirectResponse("/");
+                }
+                return System.Net.HttpStatusCode.Unauthorized;
+            };
+
             Get["/secured"] = _ =>
             {
                 IOwinAuth owinAuth = Context.GetOwinAuth();
@@ -33,19 +48,7 @@
                 }
                 return HttpStatusCode.OK;
             };
-            Post["/login"] = _ =>
-            {
-                var login = this.Bind<Login>();
-                if (login.Username == "user" && login.Password == "pass")
-                {
-                    IOwinAuth owinAuth = Context.GetOwinAuth();
-                    owinAuth.SignIn(new AuthenticationProperties {RedirectUri = "/secured"},
-                        new GenericIdentity("User", CookieAuthenticationDefaults.AuthenticationType));
-                    return null;
-                }
-                return System.Net.HttpStatusCode.Unauthorized;
-            };
-            Get["/logout"] = _ =>
+            Get["/signout"] = _ =>
             {
                 Context.GetOwinAuth().SignOut();
                 return Response.AsRedirect("/");
@@ -57,20 +60,6 @@
             public string Username { get; set; }
 
             public string Password { get; set; }
-        }
-    }
-
-    public class Startup
-    {
-        public void Configuration(IAppBuilder builder)
-        {
-            SignatureConversions.AddConversions(builder);
-            builder.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                LoginPath = new PathString("/login"),
-                LogoutPath = new PathString("/logout"),
-            });
-            builder.UseNancy();
         }
     }
 }
