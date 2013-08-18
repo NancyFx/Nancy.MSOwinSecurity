@@ -2,20 +2,20 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Microsoft.Owin.Security</id>
-    <version>2.0.0-rtw2-20817-574-dev</version>
-    <title>Microsoft.Owin.Security  (nightly 2013 Aug 17)</title>
+    <version>2.0.0-rtw2-20818-575-dev</version>
+    <title>Microsoft.Owin.Security  (nightly 2013 Aug 18)</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
     <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_enu.htm</licenseUrl>
     <projectUrl>http://katanaproject.codeplex.com/</projectUrl>
-    <iconUrl>https://nugetgallery.blob.core.windows.net/icons/Microsoft.Owin.Security.2.0.0-rtw2-20817-574-dev.png</iconUrl>
+    <iconUrl>https://nugetgallery.blob.core.windows.net/icons/Microsoft.Owin.Security.2.0.0-rtw2-20818-575-dev.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Common types which are shared by the various authentication middleware components.</description>
     <summary>Common types which are shared by the various authentication middleware components.</summary>
     <tags>Microsoft OWIN</tags>
     <dependencies>
       <dependency id="Owin" version="1.0" />
-      <dependency id="Microsoft.Owin" version="2.0.0-rtw2-20817-574-dev" />
+      <dependency id="Microsoft.Owin" version="2.0.0-rtw2-20818-575-dev" />
     </dependencies>
   </metadata>
 </package>

@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Owin.Security", "Nanc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Owin.Security.Tests", "Nancy.Owin.Security.Tests\Nancy.Owin.Security.Tests.csproj", "{75893D02-C977-4637-9D67-1EE826BE391E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\SampleApp.csproj", "{70A59B70-1C59-47AC-A028-C974ACCD56D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{75893D02-C977-4637-9D67-1EE826BE391E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75893D02-C977-4637-9D67-1EE826BE391E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75893D02-C977-4637-9D67-1EE826BE391E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70A59B70-1C59-47AC-A028-C974ACCD56D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70A59B70-1C59-47AC-A028-C974ACCD56D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70A59B70-1C59-47AC-A028-C974ACCD56D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70A59B70-1C59-47AC-A028-C974ACCD56D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
