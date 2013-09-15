@@ -1,6 +1,5 @@
 ﻿namespace SampleApp
 {
-    using Microsoft.Owin;
     using Microsoft.Owin.Infrastructure;
     using Microsoft.Owin.Security.Cookies;
     using Owin;
@@ -12,10 +11,10 @@
             SignatureConversions.AddConversions(builder);
             builder.UseCookieAuthentication(new CookieAuthenticationOptions
             {
-                LoginPath = new PathString("/cookies"),
-                LogoutPath = new PathString("/logout"),
+                LoginPath = "/cookies",
+                LogoutPath = "/logout",
             });
-            builder.UseNancy(new SampleAppBootstrapper());
+            builder.UseNancy(opt => opt.Bootstrapper = new SampleAppBootstrapper());
         }
     }
 }
