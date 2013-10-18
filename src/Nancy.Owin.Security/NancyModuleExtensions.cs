@@ -1,64 +1,21 @@
-﻿using System.Collections.Generic;
-
-namespace Nancy.Owin.Security
+﻿namespace Nancy.Owin.Security
 {
-    using System;
-    using System.Security.Claims;
-    using System.Security.Principal;
+    using System.Collections.Generic;
     using Microsoft.Owin;
     using Microsoft.Owin.Security;
 
     public static class NancyContextExtensions
     {
-        public static IOwinAuth GetOwinAuth(this NancyContext nancyContext)
+        /// <summary>
+        ///     Gets the OWIN authentication manager from the nancy context.
+        /// </summary>
+        /// <param name="context">The current nancy context.</param>
+        /// <returns>An <see cref="IAuthenticationManager" />.</returns>
+        public static IAuthenticationManager GetOwinAuthentication(this NancyContext context)
         {
-            var environment = (IDictionary<string, object>)nancyContext.Items[NancyOwinHost.RequestEnvironmentKey];
+            var environment = (IDictionary<string, object>) context.Items[NancyOwinHost.RequestEnvironmentKey];
             var owinContext = new OwinContext(environment);
-            return new OwinAuth(owinContext.Authentication);
+            return owinContext.Authentication;
         }
-
-        private class OwinAuth : IOwinAuth
-        {
-            private readonly IAuthenticationManager _authenticationManager;
-
-            public OwinAuth(IAuthenticationManager authenticationManager)
-            {
-                _authenticationManager = authenticationManager;
-            }
-
-            public ClaimsPrincipal User
-            {
-                get
-                {
-                    try
-                    {
-                        return _authenticationManager.User;
-                    }
-                    catch (ArgumentNullException) // https://katanaproject.codeplex.com/workitem/53
-                    {
-                        return null;
-                    }
-                }
-            }
-
-            public void SignOut()
-            {
-                _authenticationManager.SignOut();
-            }
-
-            public void SignIn(AuthenticationProperties authenticationProperties, GenericIdentity genericIdentity)
-            {
-               _authenticationManager.SignIn(authenticationProperties, genericIdentity);
-            }
-        }
-    }
-
-    public interface IOwinAuth
-    {
-        ClaimsPrincipal User { get; }
-
-        void SignOut();
-
-        void SignIn(AuthenticationProperties authenticationProperties, GenericIdentity genericIdentity);
     }
 }
