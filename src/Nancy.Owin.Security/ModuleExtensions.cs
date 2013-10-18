@@ -15,7 +15,7 @@
         {
             module.AddBeforeHookOrExecute(ctx =>
             {
-                IAuthenticationManager auth = ctx.GetOwinAuthentication();
+                IAuthenticationManager auth = ctx.GetAuthenticationManager();
                 if (auth == null || auth.User == null)
                 {
                     return new Response { StatusCode = HttpStatusCode.Unauthorized } ;
@@ -34,7 +34,7 @@
             RequiresOwinAuthentication(module);
             module.AddBeforeHookOrExecute(ctx =>
             {
-                IAuthenticationManager auth = ctx.GetOwinAuthentication();
+                IAuthenticationManager auth = ctx.GetAuthenticationManager();
                 return !isAuthorized(auth.User) ? new Response { StatusCode = HttpStatusCode.Forbidden } : null;
             }, "Requires authorization");
         }

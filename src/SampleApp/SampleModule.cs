@@ -15,7 +15,7 @@
         {
             Get["/"] = _ =>
             {
-                var owinAuth = Context.GetOwinAuthentication();
+                var owinAuth = Context.GetAuthenticationManager();
                 var pageBase = new PageBase();
                 if (owinAuth.User != null && owinAuth.User.Identity.IsAuthenticated)
                 {
@@ -31,7 +31,7 @@
                 var login = this.Bind<Login>();
                 if (login.Username == "user" && login.Password == "pass")
                 {
-                    var owinAuth = Context.GetOwinAuthentication();
+                    var owinAuth = Context.GetAuthenticationManager();
                     owinAuth.SignIn(new AuthenticationProperties(),
                         new GenericIdentity("User", CookieAuthenticationDefaults.AuthenticationType));
                     return new RedirectResponse("/");
@@ -41,7 +41,7 @@
 
             Get["/secured"] = _ =>
             {
-                var owinAuth = Context.GetOwinAuthentication();
+                var owinAuth = Context.GetAuthenticationManager();
                 if (owinAuth.User == null || !owinAuth.User.Identity.IsAuthenticated)
                 {
                     return HttpStatusCode.Unauthorized;
@@ -50,7 +50,7 @@
             };
             Get["/signout"] = _ =>
             {
-                Context.GetOwinAuthentication().SignOut();
+                Context.GetAuthenticationManager().SignOut();
                 return Response.AsRedirect("/");
             };
         }

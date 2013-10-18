@@ -11,7 +11,7 @@
         /// </summary>
         /// <param name="context">The current nancy context.</param>
         /// <returns>An <see cref="IAuthenticationManager" />.</returns>
-        public static IAuthenticationManager GetOwinAuthentication(this NancyContext context)
+        public static IAuthenticationManager GetAuthenticationManager(this NancyContext context)
         {
             var environment = (IDictionary<string, object>) context.Items[NancyOwinHost.RequestEnvironmentKey];
             var owinContext = new OwinContext(environment);
