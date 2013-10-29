@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Owin.Security", "Nancy.Owin.Security\Nancy.Owin.Security.csproj", "{A4C5116F-3BE3-4307-8E5D-1E7240F9F633}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Owin.Security.Tests", "Nancy.Owin.Security.Tests\Nancy.Owin.Security.Tests.csproj", "{75893D02-C977-4637-9D67-1EE826BE391E}"
@@ -8,6 +10,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\SampleApp.csproj", "{70A59B70-1C59-47AC-A028-C974ACCD56D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp.Console", "SampleApp.Console\SampleApp.Console.csproj", "{DB1B080E-45F6-49E2-8DAF-9C500FECF350}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{19E5F7B5-DBC4-404E-9416-4E278E005BA7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
