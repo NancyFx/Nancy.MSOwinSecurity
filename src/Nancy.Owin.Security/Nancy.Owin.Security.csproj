@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModuleExtensions.cs" />
-    <Compile Include="NancyModuleExtensions.cs" />
+    <Compile Include="NancyContextExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
