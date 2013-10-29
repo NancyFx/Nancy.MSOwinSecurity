@@ -5,7 +5,7 @@
     using System.Net.Http;
     using System.Threading.Tasks;
     using FluentAssertions;
-    using global::Owin.Testing;
+    using Microsoft.Owin.Testing;
     using SampleApp;
     using Xunit;
 
@@ -15,8 +15,8 @@
 
         public NancyModuleExtensionsTests()
         {
-            OwinTestServer testServer = OwinTestServer.Create(builder => new Startup().Configuration(builder));
-            _httpClient = testServer.CreateHttpClient();
+            var testServer = TestServer.Create(builder => new Startup().Configuration(builder));
+            _httpClient = testServer.HttpClient;
         }
 
         [Fact]
