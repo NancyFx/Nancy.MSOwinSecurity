@@ -1,0 +1,15 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@{
+    Layout = "razor-layout.cshtml";
+}
+
+<h3>Login with usernam and password:</h3>
+
+(Login with 'user' and 'pass')
+<form action="cookies" method="POST">
+    Username: <input type="text" name="Username"><br />
+    Password: <input type="password" name="Password"><br />
+    <input type="submit" value="Submit">
+</form>
+
+<h3>Login with 3rd party</h3>
