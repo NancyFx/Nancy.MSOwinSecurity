@@ -18,7 +18,12 @@ public class MyModule : NancyModule
     {
         Get["/"] = _ =>
         {
-            ClaimsPrincipal claimsPrincipal = Context.GetAuthenticationManager().User;
+            IAuthenticationManager authenticationManager = Context.GetAuthenticationManager();
+            //ClaimsPrincipal user = authenticationManager.User;
+            //authenticationManager.SignIn(..);
+            //authenticationManager.SignOut(..);
+            //authenticationManager.AuthenticateAsync(..);
+            //authenticationManager.Challenge(..);
         };
     }
 }
