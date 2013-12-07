@@ -1,7 +1,7 @@
 Nancy.MSOwinSecurity
 ===================
 
-Enables integration with Microsoft's OWIN security middeware from the Katana project. This pacakge will allow you to easily access the IAuthenticationManager.
+Enables integration with Microsoft's OWIN security middeware from the Katana project. This pacakge will allow you to easily access the IAuthenticationManager. .NET 4.5 only.
 
 How to use
 -
