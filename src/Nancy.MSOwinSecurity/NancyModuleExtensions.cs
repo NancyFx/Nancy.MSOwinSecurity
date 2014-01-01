@@ -6,10 +6,10 @@
     public static class NancyModuleExtensions
     {
         /// <summary>
-        ///     This module requires authentication
+        ///     This module requires Microsoft Owin authentication
         /// </summary>
         /// <param name="module">Module to enable</param>
-        public static void RequiresOwinAuthentication(this INancyModule module)
+        public static void RequiresMSOwinAuthentication(this INancyModule module)
         {
             module.AddBeforeHookOrExecute(ctx =>
             {
