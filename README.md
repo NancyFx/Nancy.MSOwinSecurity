@@ -110,6 +110,7 @@ License
 
 MIT
 
+Please report issues on github.
 Questions, criticisms, compliments or otherwise, [@randompunter], or pop by the [Nancy Jabbr room].
 
   [@randompunter]: http://twitter.com/randompunter
