@@ -6,8 +6,10 @@
     using System.Threading;
     using FluentAssertions;
     using Nancy.Owin;
+    using Nancy.Security.Annotations;
     using Xunit;
 
+    [UsedImplicitly]
     public class NancyModuleExtensionsTests
     {
         public class Given_a_module_that_requires_owin_authentication

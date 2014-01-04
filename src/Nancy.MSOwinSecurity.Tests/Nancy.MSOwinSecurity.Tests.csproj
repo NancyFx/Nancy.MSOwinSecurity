@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="NancyContextExtensionsTests.cs" />
     <Compile Include="NancyModuleExtensionsTests.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

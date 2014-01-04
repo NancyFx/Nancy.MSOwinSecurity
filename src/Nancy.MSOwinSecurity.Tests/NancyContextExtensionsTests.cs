@@ -2,8 +2,10 @@
 {
     using System;
     using Nancy.Owin;
+    using Nancy.Security.Annotations;
     using Xunit;
 
+    [UsedImplicitly]
     public class NancyContextExtensionsTests
     {
         public class Given_a_nancy_context_and_no_owin_environment
