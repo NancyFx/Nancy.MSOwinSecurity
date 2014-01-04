@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Security.Claims;
     using Microsoft.Owin;
     using Microsoft.Owin.Security;
     using Nancy.Owin;
@@ -26,6 +27,17 @@
                 throw new InvalidOperationException("OWIN environment not found. Is this an owin application?");
             }
             return environment != null ? new OwinContext(environment).Authentication : null;
+        }
+
+        /// <summary>
+        ///     Get the user from the Micrososft owin user from the nancy context.
+        /// </summary>
+        /// <param name="context">The current nancy context.</param>
+        /// <returns>Returns the current user for the request.</returns>
+        public static ClaimsPrincipal GetMSOwinUser(this NancyContext context)
+        {
+            IAuthenticationManager authenticationManager = context.GetAuthenticationManager(true);
+            return authenticationManager.User;
         }
     }
 }
