@@ -10,7 +10,7 @@ Installing the nuget package:
 ```
 install-package Nancy.MSOwinSecurity
 ```
-Getting the authention manager and current user from the context:
+Getting the authentication manager and current user from the context:
 ```C#
 public class MyModule : NancyModule
 {
