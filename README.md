@@ -34,7 +34,7 @@ public class MyModule : NancyModule
 {
     public MyModule()
     {
-        this.RequiresOwinAuthentication();
+        this.RequiresMSOwinAuthentication();
         Get["/"] = _ => {...}
     }
 }
@@ -48,12 +48,63 @@ public class MyModule : NancyModule
         
         Get["/"] = _ => 
         {
-            this.RequiresOwinAuthentication();
+            this.RequiresMSOwinAuthentication();
             ....
         }
     }
 }
 ```
+Getting the current user (just a helper extension around IAuthenticationManager.User):
+```C#
+public class MyModule : NancyModule
+{
+    public MyModule()
+    {
+        
+        Get["/"] = _ => 
+        {
+            ClaimsPrincipal = Context.GetMSOwinUser();
+            ....
+        }
+    }
+}
+```
+Authorizing the user at module level:
+```C#
+public class MyModule : NancyModule
+{
+    public MyModule()
+    {
+        this.RequiresSecurityClaims(claims => claims.Any(
+            claim.ClaimType = ClaimTypes.Country &&
+            claim.Value.Equals("IE", StringComparision.Ordinal)));
+        Get["/"] = _ => 
+        {
+           ....
+        }
+    }
+}
+```
+Authorizing the user at route level:
+```C#
+public class MyModule : NancyModule
+{
+    public MyModule()
+    {
+        
+        Get["/"] = _ => 
+        {
+            this.RequiresSecurityClaims(claims => claims.Any(
+                claim.ClaimType = ClaimTypes.Country &&
+                claim.Value.Equals("IE", StringComparision.Ordinal)));
+            ...
+        }
+    }
+}
+```
+
+Personal note: this nancy extension package would integrate much better if we had extenstion properties in c# :(
+
 License
 -
 
