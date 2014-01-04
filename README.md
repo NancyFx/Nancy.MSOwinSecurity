@@ -54,7 +54,7 @@ public class MyModule : NancyModule
     }
 }
 ```
-Getting the current user (just a helper extension around IAuthenticationManager:
+Getting the current user (just a helper extension around IAuthenticationManager.User):
 ```C#
 public class MyModule : NancyModule
 {
@@ -102,6 +102,9 @@ public class MyModule : NancyModule
     }
 }
 ```
+
+Personal note: this nancy extension package would integrate much better if we had extenstion properties in c# :(
+
 License
 -
 
