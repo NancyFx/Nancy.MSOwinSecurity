@@ -77,7 +77,7 @@
             [Fact]
             public void When_get_user_should_not_be_null()
             {
-                _nancyContext.GetMSOwinCurrentUser().Should().NotBeNull();
+                _nancyContext.GetMSOwinUser().Should().NotBeNull();
             }
         }
     }
