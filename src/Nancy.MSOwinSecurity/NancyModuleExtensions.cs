@@ -17,7 +17,7 @@
             module.AddBeforeHookOrExecute(ctx =>
             {
                 IAuthenticationManager auth = ctx.GetAuthenticationManager();
-                return (auth == null || auth.User == null)
+                return (auth == null || auth.User == null || auth.User.Identity == null || !auth.User.Identity.IsAuthenticated)
                     ? HttpStatusCode.Unauthorized
                     : (Response)null;
             }, "Requires MS Owin authentication");
