@@ -38,7 +38,7 @@
             public void With_authentication_manager_but_no_user_then_should_get_unauthorized()
             {
                 var context = new NancyContext();
-                context.Items.Add(NancyOwinHost.RequestEnvironmentKey, new Dictionary<string, object>());
+                context.Items.Add(NancyMiddleware.RequestEnvironmentKey, new Dictionary<string, object>());
 
                 Response response = _testModule.InvokeBeforePipeLine(context);
 
@@ -49,7 +49,7 @@
             public void With_authentication_manager_and_a_user_then_should_get_null()
             {
                 var context = new NancyContext();
-                context.Items.Add(NancyOwinHost.RequestEnvironmentKey, new Dictionary<string, object> { { "server.User", new ClaimsPrincipal() } });
+                context.Items.Add(NancyMiddleware.RequestEnvironmentKey, new Dictionary<string, object> { { "server.User", new ClaimsPrincipal() } });
 
                 Response response = _testModule.InvokeBeforePipeLine(context);
 
@@ -75,7 +75,7 @@
                         && claim.Value.Equals("IE", StringComparison.Ordinal)));
                 _context = new NancyContext();
                 _environment = new Dictionary<string, object>();
-                _context.Items.Add(NancyOwinHost.RequestEnvironmentKey, _environment);
+                _context.Items.Add(NancyMiddleware.RequestEnvironmentKey, _environment);
             }
 
             [Fact]

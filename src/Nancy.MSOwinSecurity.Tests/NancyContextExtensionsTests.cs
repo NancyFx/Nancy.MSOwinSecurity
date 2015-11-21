@@ -34,7 +34,7 @@
             public Given_a_nancy_context_and_invalid_owin_environment_type()
             {
                 _nancyContext = new NancyContext();
-                _nancyContext.Items.Add(NancyOwinHost.RequestEnvironmentKey, "invalid");
+                _nancyContext.Items.Add(NancyMiddleware.RequestEnvironmentKey, "invalid");
             }
 
             [Fact]
@@ -51,7 +51,7 @@
             public Given_a_nancy_context_and_valid_owin_environment()
             {
                 _nancyContext = new NancyContext();
-                _nancyContext.Items.Add(NancyOwinHost.RequestEnvironmentKey, new Dictionary<string, object>());
+                _nancyContext.Items.Add(NancyMiddleware.RequestEnvironmentKey, new Dictionary<string, object>());
             }
 
             [Fact]
@@ -68,7 +68,7 @@
             public Given_a_nancy_context_and_a_authenticated_user()
             {
                 _nancyContext = new NancyContext();
-                _nancyContext.Items.Add(NancyOwinHost.RequestEnvironmentKey, new Dictionary<string, object>()
+                _nancyContext.Items.Add(NancyMiddleware.RequestEnvironmentKey, new Dictionary<string, object>()
                 {
                     {"server.User", new ClaimsPrincipal() }
                 });

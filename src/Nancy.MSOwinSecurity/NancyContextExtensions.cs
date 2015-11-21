@@ -20,7 +20,7 @@
         public static IAuthenticationManager GetAuthenticationManager(this NancyContext context, bool throwOnNull = false)
         {
             object requestEnvironment;
-            context.Items.TryGetValue(NancyOwinHost.RequestEnvironmentKey, out requestEnvironment);
+            context.Items.TryGetValue(NancyMiddleware.RequestEnvironmentKey, out requestEnvironment);
             var environment = requestEnvironment as IDictionary<string, object>;
             if (environment == null && throwOnNull)
             {
