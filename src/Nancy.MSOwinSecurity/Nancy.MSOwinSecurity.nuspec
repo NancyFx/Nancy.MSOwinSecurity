@@ -12,8 +12,8 @@
     <licenseUrl>https://github.com/damianh/Nancy.MSOwinSecurity/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/damianh/Nancy.MSOwinSecurity</projectUrl>
     <dependencies>
-        <dependency id="Nancy" version="(0.21, )"/>
-        <dependency id="Microsoft.Owin" version="(2.0, )" />
+        <dependency id="Nancy" version="[1.0,2.0)"/>
+        <dependency id="Microsoft.Owin" version="[3.0, )" />
     </dependencies>
     <tags>Nancy, OWIN, Katana</tags>
   </metadata>
