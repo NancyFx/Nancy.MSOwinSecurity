@@ -6,8 +6,8 @@
     using System.Security.Claims;
     using System.Threading;
     using FluentAssertions;
-    using Nancy.Owin;
-    using Nancy.Security.Annotations;
+    using Owin;
+    using Annotations;
     using Xunit;
 
     [UsedImplicitly]
@@ -88,13 +88,13 @@
             }
 
             [Fact]
-            public void When_authenticated_and_claims_not_valid_should_get_unauthorized()
+            public void When_authenticated_and_claims_not_valid_should_get_Forbidden()
             {
-                _environment[ServerUserKey] = new ClaimsPrincipal(new ClaimsIdentity());
+                _environment[ServerUserKey] = new ClaimsPrincipal(new ClaimsIdentity(new Claim[0], "Custom"));
 
                 Response response = _testModule.InvokeBeforePipeLine(_context);
 
-                response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+                response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
             }
 
             [Fact]

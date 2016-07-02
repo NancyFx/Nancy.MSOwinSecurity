@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Security.Claims;
     using Microsoft.Owin.Security;
-    using Nancy.Extensions;
+    using Extensions;
 
     public static class NancyModuleExtensions
     {
@@ -22,9 +22,10 @@
                     : (Response)null;
             }, "Requires MS Owin authentication");
         }
-        
+
         /// <summary>
         ///     This module requires the security claims to be validated.
+        ///     If the users claims do not match the required claims then a <see cref="HttpStatusCode.Forbidden"/> is returned.
         /// </summary>
         /// <param name="module"></param>
         /// <param name="isValid"></param>
@@ -36,7 +37,7 @@
                 IAuthenticationManager auth = ctx.GetAuthenticationManager();
                 return isValid(auth.User.Claims.ToArray())
                     ? (Response)null
-                    : HttpStatusCode.Unauthorized;
+                    : HttpStatusCode.Forbidden;
             }, "Requires valid security claims");
         }
     }
