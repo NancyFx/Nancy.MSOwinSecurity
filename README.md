@@ -16,7 +16,7 @@ public class MyModule : NancyModule
 {
     public MyModule()
     {
-        Get["/"] = _ =>
+        Get("/", _ =>
         {
             IAuthenticationManager authenticationManager = Context.GetAuthenticationManager();
             //ClaimsPrincipal user = authenticationManager.User;
@@ -24,7 +24,7 @@ public class MyModule : NancyModule
             //authenticationManager.SignOut(..);
             //authenticationManager.AuthenticateAsync(..);
             //authenticationManager.Challenge(..);
-        };
+        });
     }
 }
 ```
@@ -35,7 +35,7 @@ public class MyModule : NancyModule
     public MyModule()
     {
         this.RequiresMSOwinAuthentication();
-        Get["/"] = _ => {...}
+        Get("/", _ => {...});
     }
 }
 ```
@@ -46,11 +46,11 @@ public class MyModule : NancyModule
     public MyModule()
     {
         
-        Get["/"] = _ => 
+        Get("/", _ => 
         {
             this.RequiresMSOwinAuthentication();
             ....
-        }
+        });
     }
 }
 ```
@@ -61,11 +61,11 @@ public class MyModule : NancyModule
     public MyModule()
     {
         
-        Get["/"] = _ => 
+        Get("/", _ => 
         {
             ClaimsPrincipal = Context.GetMSOwinUser();
             ....
-        }
+        });
     }
 }
 ```
@@ -78,10 +78,10 @@ public class MyModule : NancyModule
         this.RequiresSecurityClaims(claims => claims.Any(claim =>
             claim.ClaimType = ClaimTypes.Country &&
             claim.Value.Equals("IE", StringComparision.Ordinal)));
-        Get["/"] = _ => 
+        Get("/",  _ => 
         {
            ....
-        }
+        });
     }
 }
 ```
@@ -92,13 +92,13 @@ public class MyModule : NancyModule
     public MyModule()
     {
         
-        Get["/"] = _ => 
+        Get("/", _ => 
         {
             this.RequiresSecurityClaims(claims => claims.Any(claim =>
                 claim.ClaimType = ClaimTypes.Country &&
                 claim.Value.Equals("IE", StringComparision.Ordinal)));
             ...
-        }
+        });
     }
 }
 ```
