@@ -75,7 +75,7 @@ public class MyModule : NancyModule
 {
     public MyModule()
     {
-        this.RequiresSecurityClaims(claims => claims.Any(
+        this.RequiresSecurityClaims(claims => claims.Any(claim =>
             claim.ClaimType = ClaimTypes.Country &&
             claim.Value.Equals("IE", StringComparision.Ordinal)));
         Get["/"] = _ => 
