@@ -11,11 +11,24 @@ Installing the nuget package:
 install-package Nancy.MSOwinSecurity
 ```
 Getting the authentication manager and current user from the context:
+
 ```C#
 public class MyModule : NancyModule
 {
     public MyModule()
     {
+        // v1.x Route Syntax
+        Get["/"] = _ =>
+        {
+            IAuthenticationManager authenticationManager = Context.GetAuthenticationManager();
+            //ClaimsPrincipal user = authenticationManager.User;
+            //authenticationManager.SignIn(..);
+            //authenticationManager.SignOut(..);
+            //authenticationManager.AuthenticateAsync(..);
+            //authenticationManager.Challenge(..);
+        };
+    
+        // v2.x Route Syntax
         Get("/", _ =>
         {
             IAuthenticationManager authenticationManager = Context.GetAuthenticationManager();
@@ -35,6 +48,11 @@ public class MyModule : NancyModule
     public MyModule()
     {
         this.RequiresMSOwinAuthentication();
+        
+        // v1.x Route Syntax
+        Get["/"] = _ => {...});
+        
+        // v2.x Route Syntax
         Get("/", _ => {...});
     }
 }
@@ -45,7 +63,14 @@ public class MyModule : NancyModule
 {
     public MyModule()
     {
+        // v1.x route syntax
+        Get["/"] = _ => 
+        {
+            this.RequiresMSOwinAuthentication();
+            ....
+        });
         
+        // v2.x Route Syntax        
         Get("/", _ => 
         {
             this.RequiresMSOwinAuthentication();
@@ -60,7 +85,14 @@ public class MyModule : NancyModule
 {
     public MyModule()
     {
+        // v1.x route syntax
+        Get["/"] = _ => 
+        {
+            ClaimsPrincipal = Context.GetMSOwinUser();
+            ....
+        });
         
+        // v2.x Route Syntax 
         Get("/", _ => 
         {
             ClaimsPrincipal = Context.GetMSOwinUser();
@@ -78,6 +110,14 @@ public class MyModule : NancyModule
         this.RequiresSecurityClaims(claims => claims.Any(claim =>
             claim.ClaimType = ClaimTypes.Country &&
             claim.Value.Equals("IE", StringComparision.Ordinal)));
+        
+        // v1.x route syntax 
+        Get["/"] = _ => 
+        {
+           ....
+        });
+        
+        // v2.x Route Syntax 
         Get("/",  _ => 
         {
            ....
@@ -91,7 +131,15 @@ public class MyModule : NancyModule
 {
     public MyModule()
     {
-        
+        // v1.x route syntax 
+        Get["/"] = _ => 
+        {
+           this.RequiresSecurityClaims(claims => claims.Any(claim =>
+                claim.ClaimType = ClaimTypes.Country &&
+                claim.Value.Equals("IE", StringComparision.Ordinal)));
+        });
+    
+        // v2.x Route Syntax 
         Get("/", _ => 
         {
             this.RequiresSecurityClaims(claims => claims.Any(claim =>
