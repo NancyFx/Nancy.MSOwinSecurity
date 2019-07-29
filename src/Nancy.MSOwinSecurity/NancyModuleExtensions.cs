@@ -1,4 +1,5 @@
-﻿namespace Nancy.Security
+﻿
+namespace Nancy.Security
 {
     using System;
     using System.Linq;

@@ -1,15 +1,20 @@
 Nancy.MSOwinSecurity
 ===================
 
-Enables integration with Microsoft's OWIN security middeware from the Katana project. This package will allow you to easily access the IAuthenticationManager. .NET 4.5 only.
+Enables integration with Microsoft's OWIN security middeware from the Katana
+project. This package will allow you to easily access the *IAuthenticationManager*.
+This version supports *Nancy v2* on .NET 4.5.2 (or greater) only. When using
+*Nancy v1*, please use *Nancy.MSOwinSecurity v2* instead.
 
 How to use
 -
 
 Installing the nuget package:
+
 ```
 install-package Nancy.MSOwinSecurity
 ```
+
 Getting the authentication manager and current user from the context:
 
 ```C#
@@ -27,7 +32,7 @@ public class MyModule : NancyModule
             //authenticationManager.AuthenticateAsync(..);
             //authenticationManager.Challenge(..);
         };
-    
+
         // v2.x Route Syntax
         Get("/", _ =>
         {
@@ -41,23 +46,27 @@ public class MyModule : NancyModule
     }
 }
 ```
+
 Securing a module:
+
 ```C#
 public class MyModule : NancyModule
 {
     public MyModule()
     {
         this.RequiresMSOwinAuthentication();
-        
+
         // v1.x Route Syntax
         Get["/"] = _ => {...});
-        
+
         // v2.x Route Syntax
         Get("/", _ => {...});
     }
 }
 ```
+
 Securing a route:
+
 ```C#
 public class MyModule : NancyModule
 {
@@ -69,8 +78,8 @@ public class MyModule : NancyModule
             this.RequiresMSOwinAuthentication();
             ....
         });
-        
-        // v2.x Route Syntax        
+
+        // v2.x Route Syntax
         Get("/", _ => 
         {
             this.RequiresMSOwinAuthentication();
@@ -79,7 +88,9 @@ public class MyModule : NancyModule
     }
 }
 ```
+
 Getting the current user (just a helper extension around IAuthenticationManager.User):
+
 ```C#
 public class MyModule : NancyModule
 {
@@ -91,7 +102,7 @@ public class MyModule : NancyModule
             ClaimsPrincipal = Context.GetMSOwinUser();
             ....
         });
-        
+
         // v2.x Route Syntax 
         Get("/", _ => 
         {
@@ -100,9 +111,11 @@ public class MyModule : NancyModule
         });
     }
 }
+
 ```
 Authorizing the user at module level:
 ```C#
+
 public class MyModule : NancyModule
 {
     public MyModule()
@@ -110,13 +123,13 @@ public class MyModule : NancyModule
         this.RequiresSecurityClaims(claims => claims.Any(claim =>
             claim.ClaimType = ClaimTypes.Country &&
             claim.Value.Equals("IE", StringComparision.Ordinal)));
-        
+
         // v1.x route syntax 
         Get["/"] = _ => 
         {
            ....
         });
-        
+
         // v2.x Route Syntax 
         Get("/",  _ => 
         {
@@ -124,9 +137,11 @@ public class MyModule : NancyModule
         });
     }
 }
+
 ```
 Authorizing the user at route level:
 ```C#
+
 public class MyModule : NancyModule
 {
     public MyModule()
@@ -151,7 +166,7 @@ public class MyModule : NancyModule
 }
 ```
 
-Personal note: this nancy extension package would integrate much better if we had extenstion properties in c# :(
+Personal note: this nancy extension package would integrate much better if we had extension properties in c# :(
 
 License
 -
